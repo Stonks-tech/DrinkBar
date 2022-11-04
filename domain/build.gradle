@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+
+java {
+    def configuration = rootProject.extensions.getByName("ext")
+    sourceCompatibility = configuration.sourceCompatibility
+    targetCompatibility = configuration.targetCompatibility
+}
+
+dependencies {
+    def configuration = rootProject.ext
+    implementation configuration.globalDependencies.coroutinesAndroid
+}

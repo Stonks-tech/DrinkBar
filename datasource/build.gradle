@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+def configuration = rootProject.extensions.getByName("ext")
+
+android {
+    compileSdk configuration.androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion configuration.androidMinSdkVersion
+        targetSdkVersion configuration.androidTargetSdkVersion
+        versionCode configuration.appVersionCode
+        versionName configuration.appVersionName
+    }
+
+    namespace "${configuration.appId}.datasource"
+}
+
+java {
+    sourceCompatibility = configuration.sourceCompatibility
+    targetCompatibility = configuration.targetCompatibility
+}
+
+dependencies {
+    implementation project(':data')
+    implementation(configuration.globalDependencies.retrofit)
+    implementation(configuration.globalDependencies.moshiConverter)
+}

@@ -1,0 +1,53 @@
+ext {
+    appId = "tech.stonks.drinkbar"
+    appVersionName = "0.1.0"
+    appVersionCode = 1
+
+    androidMinSdkVersion = 27
+    androidTargetSdkVersion = 33
+    androidCompileSdkVersion = 33
+    androidBuildToolVersion = "32.0.0"
+
+    jvmTarget = "1.8"
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    versions = [
+            "hilt": "2.44",
+            "coroutines": "1.6.4",
+            "lifecycle": "2.5.1",
+            "navigation": "2.5.2"
+    ]
+
+    androidDependencies = [
+            hiltPlugin: "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}",
+            hilt: "com.google.dagger:hilt-android:${versions.hilt}",
+            hiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.hilt}",
+            fragmentKtx: "androidx.fragment:fragment-ktx:1.5.3",
+            activityKtx: "androidx.activity:activity-ktx:1.6.0",
+            coreKtx: "androidx.core:core-ktx:1.7.0",
+            appCompat: "androidx.appcompat:appcompat:1.5.1",
+            material: "com.google.android.material:material:1.6.1",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:2.1.4",
+            viewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+            livedataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
+            navigationComponent: "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+            navigationUiComponent: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+    ]
+
+    globalDependencies = [
+            inject: "javax.inject:javax.inject:1",
+            coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}",
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
+            retrofit: "com.squareup.retrofit2:retrofit:2.9.0",
+            moshiConverter: "com.squareup.retrofit2:converter-moshi:2.9.0",
+            moshiKotlin: "com.squareup.moshi:moshi-kotlin:1.12.0",
+            glide: "com.github.bumptech.glide:glide:4.12.0",
+    ]
+
+    testDependencies = [
+            junit: "junit:junit:4.13.2",
+            junitExt: "androidx.test.ext:junit:1.1.4",
+            espresso: "androidx.test.espresso:espresso-core:3.4.0",
+    ]
+}

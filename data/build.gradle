@@ -1,0 +1,15 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+def configuration = rootProject.extensions.getByName("ext")
+
+java {
+    sourceCompatibility = configuration.sourceCompatibility
+    targetCompatibility = configuration.targetCompatibility
+}
+
+dependencies {
+    implementation(project(":domain"))
+}

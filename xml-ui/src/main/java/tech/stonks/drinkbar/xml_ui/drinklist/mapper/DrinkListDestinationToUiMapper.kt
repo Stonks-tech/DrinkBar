@@ -1,0 +1,5 @@
+package tech.stonks.drinkbar.xml_ui.drinklist.mapper
+
+import tech.stonks.drinkbar.xml_ui.navigation.mapper.DestinationPresentationToUiMapper
+
+interface DrinkListDestinationToUiMapper: DestinationPresentationToUiMapper

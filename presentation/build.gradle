@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+def configuration = rootProject.extensions.getByName("ext")
+
+android {
+    namespace "${configuration.appId}.presentation"
+    compileSdk configuration.androidCompileSdkVersion
+
+    defaultConfig {
+        minSdk configuration.androidMinSdkVersion
+        targetSdk configuration.androidTargetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility configuration.sourceCompatibility
+        targetCompatibility configuration.targetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = configuration.jvmTarget
+    }
+}
+
+dependencies {
+
+    implementation project(":domain")
+
+    implementation configuration.androidDependencies.coreKtx
+    implementation configuration.globalDependencies.coroutinesAndroid
+    implementation configuration.androidDependencies.appCompat
+    implementation configuration.androidDependencies.material
+    implementation configuration.androidDependencies.navigationComponent
+    implementation configuration.androidDependencies.navigationUiComponent
+    implementation configuration.androidDependencies.fragmentKtx
+    implementation configuration.androidDependencies.activityKtx
+    implementation configuration.androidDependencies.viewmodelKtx
+    implementation configuration.androidDependencies.livedataKtx
+    implementation configuration.androidDependencies.hilt
+    kapt configuration.androidDependencies.hiltCompiler
+    testImplementation configuration.testDependencies.junit
+}
