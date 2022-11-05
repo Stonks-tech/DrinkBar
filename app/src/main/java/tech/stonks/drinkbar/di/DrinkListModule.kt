@@ -10,7 +10,7 @@ import tech.stonks.drinkbar.data.drinklist.repository.DrinkListLiveRepository
 import tech.stonks.drinkbar.domain.cleanarchitecture.coroutine.CoroutineContextProvider
 import tech.stonks.drinkbar.domain.drinklist.repository.DrinkListRepository
 import tech.stonks.drinkbar.domain.drinklist.usecase.GetDrinkListUseCase
-import tech.stonks.drinkbar.presentation.drinklist.mapper.DrinkDomainToPresentationModelMapper
+import tech.stonks.drinkbar.presentation.drinklist.mapper.DrinkDomainToPresentationMapper
 
 @Suppress("UNCHECKED_CAST")
 @Module
@@ -38,7 +38,7 @@ class DrinkListModule {
     }
 
     @Provides
-    fun providesDrinkDomainToPresentationModelMapper(): DrinkDomainToPresentationModelMapper {
-        return DrinkDomainToPresentationModelMapper()
+    fun providesDrinkDomainToPresentationModelMapper(): DrinkDomainToPresentationMapper {
+        return DrinkDomainToPresentationMapper()
     }
 }

@@ -47,7 +47,7 @@ class GetDrinkListUseCaseTest {
     }
 
 
-    companion object{
+    companion object {
         private val DRINK_DOMAIN = DrinkDomainModel(
             id = "1",
             name = "name",

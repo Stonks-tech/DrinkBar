@@ -50,4 +50,10 @@ dependencies {
     implementation configuration.androidDependencies.hilt
     kapt configuration.androidDependencies.hiltCompiler
     testImplementation configuration.testDependencies.junit
+    testImplementation(configuration.testDependencies.junit)
+    testImplementation(configuration.testDependencies.mockk)
+    testImplementation(configuration.testDependencies.coroutinesTest)
+    testImplementation(configuration.testDependencies.coreTesting)
+    testImplementation(configuration.testDependencies.liveDataTesting)
+
 }
