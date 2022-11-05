@@ -13,7 +13,7 @@ java {
 dependencies {
     implementation(project(":domain"))
 
-    implementation(configuration.testDependencies.junit)
-    implementation(configuration.testDependencies.mockk)
-    implementation(configuration.testDependencies.coroutinesTest)
+    testImplementation(configuration.testDependencies.junit)
+    testImplementation(configuration.testDependencies.mockk)
+    testImplementation(configuration.testDependencies.coroutinesTest)
 }

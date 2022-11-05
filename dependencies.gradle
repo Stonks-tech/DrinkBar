@@ -51,5 +51,6 @@ ext {
             coroutinesTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}",
             junitExt: "androidx.test.ext:junit:1.1.4",
             espresso: "androidx.test.espresso:espresso-core:3.4.0",
+            mockWebServer: "com.squareup.okhttp3:mockwebserver:4.9.1",
     ]
 }
