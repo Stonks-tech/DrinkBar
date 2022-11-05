@@ -26,5 +26,10 @@ java {
 dependencies {
     implementation project(':data')
     implementation(configuration.globalDependencies.retrofit)
+    implementation(configuration.globalDependencies.moshiKotlin)
     implementation(configuration.globalDependencies.moshiConverter)
+    testImplementation(configuration.testDependencies.junit)
+    testImplementation(configuration.testDependencies.mockk)
+    testImplementation(configuration.testDependencies.coroutinesTest)
+    testImplementation(configuration.testDependencies.mockWebServer)
 }

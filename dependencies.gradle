@@ -47,7 +47,12 @@ ext {
 
     testDependencies = [
             junit: "junit:junit:4.13.2",
+            mockk: "io.mockk:mockk:1.12.0",
+            coroutinesTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}",
             junitExt: "androidx.test.ext:junit:1.1.4",
             espresso: "androidx.test.espresso:espresso-core:3.4.0",
+            mockWebServer: "com.squareup.okhttp3:mockwebserver:4.9.1",
+            coreTesting: "androidx.arch.core:core-testing:2.1.0",
+            liveDataTesting: "com.jraska.livedata:testing-ktx:1.2.0",
     ]
 }

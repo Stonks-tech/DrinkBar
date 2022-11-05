@@ -2,7 +2,7 @@ package tech.stonks.drinkbar.datasource.drink.model
 
 import com.squareup.moshi.Json
 
-data class DrinkApiDataSourceModel(
+data class DrinkApiModel(
     @Json(name = "idDrink")
     val id: String,
     @Json(name = "strDrink")

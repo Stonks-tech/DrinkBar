@@ -12,4 +12,8 @@ java {
 
 dependencies {
     implementation(project(":domain"))
+
+    testImplementation(configuration.testDependencies.junit)
+    testImplementation(configuration.testDependencies.mockk)
+    testImplementation(configuration.testDependencies.coroutinesTest)
 }
