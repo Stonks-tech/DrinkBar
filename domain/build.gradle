@@ -13,4 +13,8 @@ java {
 dependencies {
     def configuration = rootProject.ext
     implementation configuration.globalDependencies.coroutinesAndroid
+    implementation configuration.globalDependencies.coroutines
+    testImplementation(configuration.testDependencies.junit)
+    testImplementation(configuration.testDependencies.mockk)
+    testImplementation(configuration.testDependencies.coroutinesTest)
 }
