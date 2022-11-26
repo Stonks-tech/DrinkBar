@@ -1,23 +1,21 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'com.android.library'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
 }
+def configuration = rootProject.extensions.getByName("ext")
 
 android {
-    def configuration = rootProject.extensions.getByName("ext")
-    namespace configuration.appId
+    namespace "${configuration.appId}.composeui"
     compileSdk configuration.androidCompileSdkVersion
 
     defaultConfig {
-        applicationId configuration.appId
         minSdk configuration.androidMinSdkVersion
         targetSdk configuration.androidTargetSdkVersion
-        versionCode configuration.appVersionCode
-        versionName configuration.appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,16 +35,15 @@ android {
         targetCompatibility configuration.targetCompatibility
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = configuration.jvmTarget
     }
 }
 
 dependencies {
-    def configuration = rootProject.extensions.getByName("ext")
-    implementation configuration.androidDependencies.coreKtx
-    implementation configuration.androidDependencies.appCompat
-    implementation configuration.androidDependencies.material
-    implementation configuration.androidDependencies.constraintLayout
+    implementation project(":presentation")
+    implementation configuration.androidDependencies.hilt
+    kapt configuration.androidDependencies.hiltCompiler
+    implementation configuration.globalDependencies.glide
     implementation configuration.androidDependencies.hilt
     implementation configuration.androidDependencies.navigationComponent
     implementation configuration.androidDependencies.navigationUiComponent
@@ -54,18 +51,16 @@ dependencies {
     implementation configuration.androidDependencies.activityKtx
     implementation configuration.androidDependencies.viewmodelKtx
     implementation configuration.androidDependencies.livedataKtx
-    implementation configuration.globalDependencies.retrofit
-    implementation configuration.globalDependencies.moshiConverter
-    implementation configuration.globalDependencies.moshiKotlin
+    implementation configuration.androidDependencies.coreKtx
+    implementation configuration.androidDependencies.appCompat
+    implementation configuration.androidDependencies.material
     implementation platform(configuration.androidDependencies.composePlatform)
     implementation configuration.androidDependencies.composeActivity
+    implementation configuration.androidDependencies.composeMaterial3
+    implementation configuration.androidDependencies.composePreview
+    implementation configuration.androidDependencies.composePreviewTooling
+    implementation configuration.androidDependencies.composeViewModel
+    implementation configuration.androidDependencies.composeLiveData
     implementation configuration.androidDependencies.composeHiltNavigation
-    implementation configuration.androidDependencies.navigationComponentCompose
-    implementation project(':data')
-    implementation project(':domain')
-    implementation project(':presentation')
-    implementation project(':compose-ui')
-    implementation project(':datasource')
-    kapt configuration.androidDependencies.hiltCompiler
     testImplementation configuration.testDependencies.junit
 }

@@ -33,6 +33,15 @@ ext {
             livedataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}",
             navigationComponent: "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
             navigationUiComponent: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+            navigationComponentCompose: "androidx.navigation:navigation-compose:${versions.navigation}",
+            composePlatform: "androidx.compose:compose-bom:2022.10.00",
+            composeMaterial3: "androidx.compose.material3:material3",
+            composePreview: "androidx.compose.ui:ui-tooling-preview",
+            composePreviewTooling: "androidx.compose.ui:ui-tooling",
+            composeViewModel: "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1",
+            composeLiveData: "androidx.compose.runtime:runtime-livedata",
+            composeActivity: "androidx.activity:activity-compose:1.5.1",
+            composeHiltNavigation: "androidx.hilt:hilt-navigation-compose:1.0.0"
     ]
 
     globalDependencies = [

@@ -3,20 +3,15 @@ package tech.stonks.drinkbar.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.android.scopes.FragmentScoped
+import dagger.hilt.components.SingletonComponent
+import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkListDestinationToUiMapper
+import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkListNotificationPresentationToUiMapper
+import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkPresentationToUiMapper
 import tech.stonks.drinkbar.navigation.AppDrinkListDestinationToUiMapper
-import tech.stonks.drinkbar.presentation.drinklist.model.DrinkListState
-import tech.stonks.drinkbar.xml_ui.architecture.mapper.ViewStateBinder
-import tech.stonks.drinkbar.xml_ui.architecture.view.ViewsProvider
-import tech.stonks.drinkbar.xml_ui.drinklist.binder.DrinkListStateBinder
-import tech.stonks.drinkbar.xml_ui.drinklist.mapper.DrinkListDestinationToUiMapper
-import tech.stonks.drinkbar.xml_ui.drinklist.mapper.DrinkListNotificationPresentationToUiMapper
-import tech.stonks.drinkbar.xml_ui.drinklist.mapper.DrinkPresentationToUiMapper
 
 @Suppress("UNCHECKED_CAST")
 @Module
-@InstallIn(FragmentComponent::class)
+@InstallIn(SingletonComponent::class)
 class DrinkListUiModule {
 
     @Provides
@@ -32,11 +27,5 @@ class DrinkListUiModule {
     @Provides
     fun providesDrinkListDestinationToUiMapper(): DrinkListDestinationToUiMapper {
         return AppDrinkListDestinationToUiMapper()
-    }
-
-    @Provides
-    @FragmentScoped
-    fun providesDrinkListBinder(drinkPresentationToUiMapper: DrinkPresentationToUiMapper): ViewStateBinder<DrinkListState, ViewsProvider> {
-        return DrinkListStateBinder(drinkPresentationToUiMapper) as ViewStateBinder<DrinkListState, ViewsProvider>
     }
 }
