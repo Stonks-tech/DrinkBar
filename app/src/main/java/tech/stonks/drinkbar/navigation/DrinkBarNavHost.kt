@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import tech.stonks.drinkbar.composeui.drinklist.view.DrinkListDependencyProvider
 import tech.stonks.drinkbar.composeui.drinklist.view.DrinkListPage
 import tech.stonks.drinkbar.di.entrypoints.drinklist.DrinkListEntryPoint
 import tech.stonks.drinkbar.di.utils.hiltEntryPoint
@@ -24,11 +25,12 @@ fun DrinkBarNavHost(
         startDestination = startDestination
     ) {
         composable("drink_list") {
-            val entryPoint = hiltEntryPoint<DrinkListEntryPoint>()
+            val dependencyProvider =
+                hiltEntryPoint<DrinkListEntryPoint>() as DrinkListDependencyProvider
             val viewModel = hiltViewModel<DrinkListViewModel>()
             DrinkListPage(
                 viewModel,
-                entryPoint.drinkMapper
+                dependencyProvider
             )
         }
     }

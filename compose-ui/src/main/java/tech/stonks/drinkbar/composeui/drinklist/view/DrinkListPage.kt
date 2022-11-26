@@ -17,7 +17,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import tech.stonks.drinkbar.composeui.R
-import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkPresentationToUiMapper
 import tech.stonks.drinkbar.composeui.drinklist.model.DrinkUiModel
 import tech.stonks.drinkbar.presentation.drinklist.model.DrinkListState
 import tech.stonks.drinkbar.presentation.drinklist.viewmodel.DrinkListViewModel
@@ -25,13 +24,15 @@ import tech.stonks.drinkbar.presentation.drinklist.viewmodel.DrinkListViewModel
 @Composable
 fun DrinkListPage(
     viewModel: DrinkListViewModel,
-    drinkMapper: DrinkPresentationToUiMapper
+    dependencyProvider: DrinkListDependencyProvider
 ) {
+
     LaunchedEffect(viewModel) {
         viewModel.onEntered()
     }
+
     val state by viewModel.state.observeAsState(DrinkListState())
-    val drinkList = state.drinks.map(drinkMapper::map)
+    val drinkList = state.drinks.map(dependencyProvider.drinkMapper::map)
     DrinkListPage(drinkList, state.isLoading)
 }
 

@@ -3,10 +3,8 @@ package tech.stonks.drinkbar.di.entrypoints.drinklist
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkPresentationToUiMapper
+import tech.stonks.drinkbar.composeui.drinklist.view.DrinkListDependencyProvider
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
-interface DrinkListEntryPoint {
-    val drinkMapper: DrinkPresentationToUiMapper
-}
+interface DrinkListEntryPoint : DrinkListDependencyProvider
