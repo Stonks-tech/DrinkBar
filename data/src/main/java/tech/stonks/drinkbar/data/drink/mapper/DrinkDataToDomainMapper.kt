@@ -1,7 +1,7 @@
-package tech.stonks.drinkbar.data.drinklist.mapper
+package tech.stonks.drinkbar.data.drink.mapper
 
 import tech.stonks.drinkbar.data.drink.model.DrinkDataModel
-import tech.stonks.drinkbar.domain.drinklist.model.DrinkDomainModel
+import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 
 class DrinkDataToDomainMapper {
     fun map(drinkDataModel: DrinkDataModel): DrinkDomainModel {

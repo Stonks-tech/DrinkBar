@@ -1,4 +1,4 @@
-package tech.stonks.drinkbar.di.entrypoints.drinklist
+package tech.stonks.drinkbar.di.drinklist
 
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn

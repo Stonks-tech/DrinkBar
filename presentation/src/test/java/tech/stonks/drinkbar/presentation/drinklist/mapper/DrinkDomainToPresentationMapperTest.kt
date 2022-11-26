@@ -3,8 +3,9 @@ package tech.stonks.drinkbar.presentation.drinklist.mapper
 import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import tech.stonks.drinkbar.domain.drinklist.model.DrinkDomainModel
-import tech.stonks.drinkbar.presentation.drinklist.model.DrinkPresentationModel
+import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
+import tech.stonks.drinkbar.presentation.drink.mapper.DrinkDomainToPresentationMapper
+import tech.stonks.drinkbar.presentation.drink.model.DrinkPresentationModel
 
 class DrinkDomainToPresentationMapperTest {
     private lateinit var _mapper: DrinkDomainToPresentationMapper

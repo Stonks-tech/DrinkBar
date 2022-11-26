@@ -12,7 +12,7 @@ import org.junit.Before
 import org.junit.Test
 import tech.stonks.drinkbar.domain.FakeCoroutineContextProvider
 import tech.stonks.drinkbar.domain.cleanarchitecture.coroutine.CoroutineContextProvider
-import tech.stonks.drinkbar.domain.drinklist.model.DrinkDomainModel
+import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 import tech.stonks.drinkbar.domain.drinklist.repository.DrinkListRepository
 
 class GetDrinkListUseCaseTest {

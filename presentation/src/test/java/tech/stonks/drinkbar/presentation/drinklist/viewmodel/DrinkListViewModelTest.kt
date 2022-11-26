@@ -9,11 +9,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import tech.stonks.drinkbar.domain.cleanarchitecture.usecase.UseCaseExecutor
-import tech.stonks.drinkbar.domain.drinklist.model.DrinkDomainModel
+import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 import tech.stonks.drinkbar.domain.drinklist.usecase.GetDrinkListUseCase
-import tech.stonks.drinkbar.presentation.drinklist.mapper.DrinkDomainToPresentationMapper
+import tech.stonks.drinkbar.presentation.drink.mapper.DrinkDomainToPresentationMapper
+import tech.stonks.drinkbar.presentation.drink.model.DrinkPresentationModel
 import tech.stonks.drinkbar.presentation.drinklist.model.DrinkListState
-import tech.stonks.drinkbar.presentation.drinklist.model.DrinkPresentationModel
 
 class DrinkListViewModelTest {
     @get:Rule

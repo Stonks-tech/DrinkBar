@@ -2,6 +2,7 @@
 
 package tech.stonks.drinkbar.composeui.drinklist.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -27,11 +28,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import tech.stonks.drinkbar.composeui.R
+import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkListDestinationToUiMapper
+import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkPresentationToUiMapper
 import tech.stonks.drinkbar.composeui.drinklist.model.DrinkUiModel
 import tech.stonks.drinkbar.presentation.drinklist.model.DrinkListState
 import tech.stonks.drinkbar.presentation.drinklist.viewmodel.DrinkListViewModel
@@ -39,19 +43,24 @@ import tech.stonks.drinkbar.presentation.drinklist.viewmodel.DrinkListViewModel
 @Composable
 fun DrinkListPage(
     viewModel: DrinkListViewModel,
-    dependencyProvider: DrinkListDependencyProvider
+    drinkMapper: DrinkPresentationToUiMapper,
+    destinationMapper: DrinkListDestinationToUiMapper,
 ) {
-
     LaunchedEffect(viewModel) {
         viewModel.onEntered()
     }
-
     val state by viewModel.state.observeAsState(DrinkListState())
-    val drinkList = state.drinks.map(dependencyProvider.drinkMapper::map)
+    val drinkList = state.drinks.map(drinkMapper::map)
+
+    viewModel.destination.observe(LocalLifecycleOwner.current) { destination ->
+        destinationMapper.toUi(destination).navigate()
+    }
+
     DrinkListPage(
         drinkList = drinkList,
         isLoading = state.isLoading,
-        onRefresh = viewModel::onRefreshAction
+        onRefresh = viewModel::onRefreshAction,
+        onItemClick = viewModel::onItemClicked,
     )
 }
 
@@ -59,7 +68,8 @@ fun DrinkListPage(
 private fun DrinkListPage(
     drinkList: List<DrinkUiModel>,
     isLoading: Boolean,
-    onRefresh: () -> Unit = {}
+    onRefresh: () -> Unit = {},
+    onItemClick: (id: String) -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -77,7 +87,7 @@ private fun DrinkListPage(
                 .padding(padding)
                 .pullRefresh(pullRefreshState)
         ) {
-            DrinkList(drinkList)
+            DrinkList(drinkList, onItemClick)
             PullRefreshIndicator(
                 refreshing = isLoading,
                 state = pullRefreshState,
@@ -88,20 +98,20 @@ private fun DrinkListPage(
 }
 
 @Composable
-private fun DrinkList(drinkList: List<DrinkUiModel>) {
+private fun DrinkList(drinkList: List<DrinkUiModel>, onClick: (id: String) -> Unit) {
     LazyColumn(
         modifier = Modifier
             .padding(dimensionResource(id = R.dimen.drink_list_padding))
             .fillMaxWidth()
     ) {
         items(drinkList.size) { index ->
-            DrinkItem(drinkList[index])
+            DrinkItem(drinkList[index], onClick)
         }
     }
 }
 
 @Composable
-private fun DrinkItem(drink: DrinkUiModel) {
+private fun DrinkItem(drink: DrinkUiModel, onClick: (id: String) -> Unit) {
     Box(
         modifier = Modifier
             .padding(
@@ -113,7 +123,9 @@ private fun DrinkItem(drink: DrinkUiModel) {
             .fillMaxWidth()
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onClick(drink.id) },
             shape = RoundedCornerShape(
                 dimensionResource(id = R.dimen.drink_list_item_corner_radius)
             ),
@@ -167,11 +179,13 @@ private fun DrinkListPagePreview() {
     DrinkListPage(
         drinkList = listOf(
             DrinkUiModel(
+                id = "1",
                 name = "Drink 1",
                 thumbnail = "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
                 description = "Lorem ipsum"
             ),
             DrinkUiModel(
+                id = "2",
                 name = "Drink 1",
                 thumbnail = "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
                 description = "Lorem ipsum"

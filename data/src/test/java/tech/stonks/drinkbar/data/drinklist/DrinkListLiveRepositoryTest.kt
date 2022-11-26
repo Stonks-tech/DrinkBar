@@ -7,21 +7,21 @@ import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import tech.stonks.drinkbar.data.drink.datasource.DrinkDataSource
+import tech.stonks.drinkbar.data.drink.mapper.DrinkDataToDomainMapper
 import tech.stonks.drinkbar.data.drink.model.DrinkDataModel
-import tech.stonks.drinkbar.data.drinklist.mapper.DrinkDataToDomainMapper
-import tech.stonks.drinkbar.data.drinklist.repository.DrinkListLiveRepository
-import tech.stonks.drinkbar.domain.drinklist.model.DrinkDomainModel
+import tech.stonks.drinkbar.data.drinklist.repository.DrinkListRepositoryImpl
+import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 
 class DrinkListLiveRepositoryTest {
     private lateinit var _mapper: DrinkDataToDomainMapper
     private lateinit var _drinkDataSource: DrinkDataSource
-    private lateinit var _repository: DrinkListLiveRepository
+    private lateinit var _repository: DrinkListRepositoryImpl
 
     @Before
     fun setUp() {
         _mapper = mockk()
         _drinkDataSource = mockk()
-        _repository = DrinkListLiveRepository(_drinkDataSource, _mapper)
+        _repository = DrinkListRepositoryImpl(_drinkDataSource, _mapper)
     }
 
     @Test

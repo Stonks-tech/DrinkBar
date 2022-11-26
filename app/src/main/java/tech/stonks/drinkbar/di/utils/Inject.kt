@@ -9,3 +9,8 @@ import dagger.hilt.EntryPoints
 inline fun <reified T> hiltEntryPoint(): T {
     return EntryPoints.get(LocalContext.current.applicationContext, T::class.java)
 }
+
+@Composable
+inline fun <reified T> hiltActivityEntryPoint(): T {
+    return EntryPoints.get(LocalContext.current, T::class.java)
+}
