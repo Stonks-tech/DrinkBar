@@ -62,6 +62,7 @@ dependencies {
     implementation configuration.androidDependencies.composeViewModel
     implementation configuration.androidDependencies.composeLiveData
     implementation configuration.androidDependencies.composeHiltNavigation
+    implementation configuration.androidDependencies.composeMaterial
     implementation configuration.androidDependencies.coil
     testImplementation configuration.testDependencies.junit
 }

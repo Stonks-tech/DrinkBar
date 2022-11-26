@@ -1,18 +1,20 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 
 package tech.stonks.drinkbar.composeui.drinklist.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -46,13 +48,18 @@ fun DrinkListPage(
 
     val state by viewModel.state.observeAsState(DrinkListState())
     val drinkList = state.drinks.map(dependencyProvider.drinkMapper::map)
-    DrinkListPage(drinkList, state.isLoading)
+    DrinkListPage(
+        drinkList = drinkList,
+        isLoading = state.isLoading,
+        onRefresh = viewModel::onRefreshAction
+    )
 }
 
 @Composable
 private fun DrinkListPage(
     drinkList: List<DrinkUiModel>,
-    isLoading: Boolean
+    isLoading: Boolean,
+    onRefresh: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -61,24 +68,22 @@ private fun DrinkListPage(
             )
         }
     ) { padding ->
-        Box(modifier = Modifier.padding(padding)) {
-            if (isLoading) {
-                Loading()
-            } else {
-                DrinkList(drinkList)
-            }
+        val pullRefreshState = rememberPullRefreshState(
+            refreshing = isLoading,
+            onRefresh = onRefresh
+        )
+        Box(
+            modifier = Modifier
+                .padding(padding)
+                .pullRefresh(pullRefreshState)
+        ) {
+            DrinkList(drinkList)
+            PullRefreshIndicator(
+                refreshing = isLoading,
+                state = pullRefreshState,
+                modifier = Modifier.align(Alignment.TopCenter)
+            )
         }
-    }
-}
-
-@Composable
-private fun Loading() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        CircularProgressIndicator()
     }
 }
 

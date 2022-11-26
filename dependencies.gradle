@@ -13,14 +13,14 @@ ext {
     targetCompatibility = JavaVersion.VERSION_1_8
 
     versions = [
-            "hilt": "2.44",
+            "hilt"      : "2.44",
             "coroutines": "1.6.4",
-            "lifecycle": "2.5.1",
+            "lifecycle" : "2.5.1",
             "navigation": "2.5.2"
     ]
 
     androidDependencies = [
-            hiltPlugin: "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}",
+            hiltPlugin                : "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}",
             hilt                      : "com.google.dagger:hilt-android:${versions.hilt}",
             hiltCompiler              : "com.google.dagger:hilt-android-compiler:${versions.hilt}",
             fragmentKtx               : "androidx.fragment:fragment-ktx:1.5.3",
@@ -36,6 +36,7 @@ ext {
             navigationComponentCompose: "androidx.navigation:navigation-compose:${versions.navigation}",
             composePlatform           : "androidx.compose:compose-bom:2022.10.00",
             composeMaterial3          : "androidx.compose.material3:material3",
+            composeMaterial           : "androidx.compose.material:material",
             composePreview            : "androidx.compose.ui:ui-tooling-preview",
             composePreviewTooling     : "androidx.compose.ui:ui-tooling",
             composeViewModel          : "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1",
@@ -46,23 +47,23 @@ ext {
     ]
 
     globalDependencies = [
-            inject: "javax.inject:javax.inject:1",
-            coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}",
+            inject           : "javax.inject:javax.inject:1",
+            coroutines       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}",
             coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}",
-            retrofit: "com.squareup.retrofit2:retrofit:2.9.0",
-            moshiConverter: "com.squareup.retrofit2:converter-moshi:2.9.0",
-            moshiKotlin: "com.squareup.moshi:moshi-kotlin:1.12.0",
-            glide: "com.github.bumptech.glide:glide:4.12.0",
+            retrofit         : "com.squareup.retrofit2:retrofit:2.9.0",
+            moshiConverter   : "com.squareup.retrofit2:converter-moshi:2.9.0",
+            moshiKotlin      : "com.squareup.moshi:moshi-kotlin:1.12.0",
+            glide            : "com.github.bumptech.glide:glide:4.12.0",
     ]
 
     testDependencies = [
-            junit: "junit:junit:4.13.2",
-            mockk: "io.mockk:mockk:1.12.0",
-            coroutinesTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}",
-            junitExt: "androidx.test.ext:junit:1.1.4",
-            espresso: "androidx.test.espresso:espresso-core:3.4.0",
-            mockWebServer: "com.squareup.okhttp3:mockwebserver:4.9.1",
-            coreTesting: "androidx.arch.core:core-testing:2.1.0",
+            junit          : "junit:junit:4.13.2",
+            mockk          : "io.mockk:mockk:1.12.0",
+            coroutinesTest : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutines}",
+            junitExt       : "androidx.test.ext:junit:1.1.4",
+            espresso       : "androidx.test.espresso:espresso-core:3.4.0",
+            mockWebServer  : "com.squareup.okhttp3:mockwebserver:4.9.1",
+            coreTesting    : "androidx.arch.core:core-testing:2.1.0",
             liveDataTesting: "com.jraska.livedata:testing-ktx:1.2.0",
     ]
 }
