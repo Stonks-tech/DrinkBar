@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="drink_list_padding">16dp</dimen>
+    <dimen name="drink_list_item_padding_vertical">16dp</dimen>
+    <dimen name="drink_list_item_padding_horizontal">0dp</dimen>
+    <dimen name="drink_list_item_corner_radius">8dp</dimen>
+    <dimen name="drink_list_item_padding">12dp</dimen>
+    <dimen name="drink_list_item_content_space">12dp</dimen>
+    <dimen name="drink_list_item_image_height">300dp</dimen>
+    <dimen name="drink_list_item_title_space">4dp</dimen>
+</resources>
