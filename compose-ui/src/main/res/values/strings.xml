@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="drink_list_title">DrinkBar</string>
+    <string name="drink_list_item_image_content_description">Picture of %s cocktail</string>
 </resources>
