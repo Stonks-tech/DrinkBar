@@ -37,6 +37,7 @@ class GetDrinkDetailsUseCaseTest {
             "description",
             "thumbnail",
             "image",
+            emptyList()
         )
     }
 }

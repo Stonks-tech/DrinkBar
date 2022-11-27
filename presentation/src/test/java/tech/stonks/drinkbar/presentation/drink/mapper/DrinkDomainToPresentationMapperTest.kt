@@ -12,7 +12,7 @@ import tech.stonks.drinkbar.presentation.drink.model.DrinkPresentationModel
 import tech.stonks.drinkbar.presentation.drink.model.IngredientPresentationModel
 
 class DrinkDomainToPresentationMapperTest {
-    private lateinit var _ingredientsMapper: IngredientDomainToPresentationMapperTest
+    private lateinit var _ingredientsMapper: IngredientDomainToPresentationMapper
     private lateinit var _mapper: DrinkDomainToPresentationMapper
 
     @Before

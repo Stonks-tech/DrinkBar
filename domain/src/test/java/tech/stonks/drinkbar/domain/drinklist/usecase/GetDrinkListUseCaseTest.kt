@@ -53,7 +53,8 @@ class GetDrinkListUseCaseTest {
             name = "name",
             description = "description",
             image = "image",
-            thumbnail = "thumbnail"
+            thumbnail = "thumbnail",
+            ingredients = emptyList()
         )
     }
 }
