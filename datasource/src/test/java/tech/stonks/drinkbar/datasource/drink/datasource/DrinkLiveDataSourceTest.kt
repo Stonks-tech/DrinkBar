@@ -12,7 +12,6 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import tech.stonks.drinkbar.data.drink.datasource.DrinkDataSource
@@ -57,7 +56,7 @@ class DrinkLiveDataSourceTest {
     }
 
     @Test
-    fun `given nothing when getDrinkList then return drink list`() {
+    fun `given nothing when searchDrink then return drink list`() {
         _mockWebServer.enqueueResponse("search-drink-200.json", 200)
         every { _drinkApiToDataMapper.map(DRINK_API) } returns DRINK_DATA
 
@@ -67,11 +66,31 @@ class DrinkLiveDataSourceTest {
     }
 
     @Test
-    fun `given nothing when getDrinkList then map with mapper`() {
+    fun `given nothing when searchDrink then map with mapper`() {
         _mockWebServer.enqueueResponse("search-drink-200.json", 200)
         every { _drinkApiToDataMapper.map(DRINK_API) } returns DRINK_DATA
 
         val actual = _dataSource.getDrinkList()
+
+        verify { _drinkApiToDataMapper.map(DRINK_API) }
+    }
+
+    @Test
+    fun `given drinkId when getDrink then return drink`() {
+        _mockWebServer.enqueueResponse("get-drink-200.json", 200)
+        every { _drinkApiToDataMapper.map(DRINK_API) } returns DRINK_DATA
+
+        val actual = _dataSource.getDrink("1")
+
+        assertEquals(DRINK_DATA, actual)
+    }
+
+    @Test
+    fun `given drinkId when getDrink then map with mapper`() {
+        _mockWebServer.enqueueResponse("get-drink-200.json", 200)
+        every { _drinkApiToDataMapper.map(DRINK_API) } returns DRINK_DATA
+
+        val actual = _dataSource.getDrink("1")
 
         verify { _drinkApiToDataMapper.map(DRINK_API) }
     }
