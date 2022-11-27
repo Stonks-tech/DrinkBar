@@ -23,6 +23,14 @@ class DrinkDetailsViewModel @AssistedInject constructor(
         loadDrink()
     }
 
+    fun onRetryAction() {
+        loadDrink()
+    }
+
+    fun onBackAction() {
+        navigateBack()
+    }
+
     private fun loadDrink() {
         updateState(DrinkDetailsState::loading)
         execute(

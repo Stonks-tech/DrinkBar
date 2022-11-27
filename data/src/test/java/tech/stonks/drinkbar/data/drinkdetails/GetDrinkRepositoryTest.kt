@@ -63,6 +63,7 @@ class GetDrinkRepositoryTest {
             image = "image",
             thumbnail = "thumbnail",
             description = "description",
+            ingredients = emptyList()
         )
         private val DRINK_DOMAIN = DrinkDomainModel(
             id = "1",
@@ -70,6 +71,7 @@ class GetDrinkRepositoryTest {
             image = "image",
             thumbnail = "thumbnail",
             description = "description",
+            ingredients = emptyList()
         )
     }
 }

@@ -9,7 +9,15 @@ class DrinkPresentationToUiMapper {
             id = drink.id,
             name = drink.name,
             description = drink.description,
-            thumbnail = drink.thumbnail
+            thumbnail = drink.thumbnail,
+            ingredients = drink.ingredients.map {
+                buildString {
+                    append(it.name)
+                    if (it.measure != null) {
+                        append(" (${it.measure})")
+                    }
+                }
+            }
         )
     }
 }

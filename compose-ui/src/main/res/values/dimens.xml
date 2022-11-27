@@ -8,4 +8,10 @@
     <dimen name="drink_list_item_content_space">12dp</dimen>
     <dimen name="drink_list_item_image_height">300dp</dimen>
     <dimen name="drink_list_item_title_space">4dp</dimen>
+    <dimen name="drink_details_page_padding">16dp</dimen>
+    <dimen name="drink_details_card_bottom_padding">16dp</dimen>
+    <dimen name="drink_details_card_padding">12dp</dimen>
+    <dimen name="status_item_spacing">16dp</dimen>
+    <dimen name="drink_details_headline_padding_bottom">8dp</dimen>
+    <dimen name="drink_details_ingredient_item_padding_vertical">8dp</dimen>
 </resources>

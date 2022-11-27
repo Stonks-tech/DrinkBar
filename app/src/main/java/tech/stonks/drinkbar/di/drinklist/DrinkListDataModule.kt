@@ -19,9 +19,4 @@ class DrinkListDataModule {
     ): DrinkListRepository {
         return DrinkListRepositoryImpl(drinkApiDataSource, drinkDataModelToDomainModelMapper)
     }
-
-    @Provides
-    fun providesDrinkDataModelToDomainMapper(): DrinkDataToDomainMapper {
-        return DrinkDataToDomainMapper()
-    }
 }

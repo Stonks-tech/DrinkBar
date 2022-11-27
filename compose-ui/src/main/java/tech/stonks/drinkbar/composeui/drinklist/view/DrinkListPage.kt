@@ -182,13 +182,15 @@ private fun DrinkListPagePreview() {
                 id = "1",
                 name = "Drink 1",
                 thumbnail = "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
-                description = "Lorem ipsum"
+                description = "Lorem ipsum",
+                ingredients = emptyList()
             ),
             DrinkUiModel(
                 id = "2",
                 name = "Drink 1",
                 thumbnail = "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
-                description = "Lorem ipsum"
+                description = "Lorem ipsum",
+                ingredients = emptyList()
             ),
         ),
         isLoading = false

@@ -5,4 +5,5 @@ data class DrinkPresentationModel(
     val name: String,
     val description: String,
     val thumbnail: String?,
+    val ingredients: List<IngredientPresentationModel>,
 )

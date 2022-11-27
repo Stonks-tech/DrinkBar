@@ -16,6 +16,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import tech.stonks.drinkbar.data.drink.datasource.DrinkDataSource
 import tech.stonks.drinkbar.data.drink.model.DrinkDataModel
+import tech.stonks.drinkbar.data.drink.model.IngredientDataModel
 import tech.stonks.drinkbar.datasource.drink.mapper.DrinkApiToDataMapper
 import tech.stonks.drinkbar.datasource.drink.model.DrinkApiModel
 import tech.stonks.drinkbar.datasource.drink.service.DrinkService
@@ -101,7 +102,13 @@ class DrinkLiveDataSourceTest {
             name = "Margarita",
             image = "https://commons.wikimedia.org/wiki/File:Klassiche_Margarita.jpg",
             description = "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
-            thumbnail = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+            thumbnail = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+            ingredients = listOf(
+                IngredientDataModel("Tequila", "1 1/2 oz "),
+                IngredientDataModel("Triple sec", "1/2 oz "),
+                IngredientDataModel("Lime juice", "1 oz "),
+                IngredientDataModel("Salt", null)
+            )
         )
 
         private val DRINK_API = DrinkApiModel(
@@ -109,7 +116,14 @@ class DrinkLiveDataSourceTest {
             name = "Margarita",
             description = "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
             thumbnail = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-            image = "https://commons.wikimedia.org/wiki/File:Klassiche_Margarita.jpg"
+            image = "https://commons.wikimedia.org/wiki/File:Klassiche_Margarita.jpg",
+            ingredient1 = "Tequila",
+            ingredient2 = "Triple sec",
+            ingredient3 = "Lime juice",
+            ingredient4 = "Salt",
+            measure1 = "1 1/2 oz ",
+            measure2 = "1/2 oz ",
+            measure3 = "1 oz ",
         )
     }
 }

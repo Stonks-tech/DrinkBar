@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import tech.stonks.drinkbar.data.drink.datasource.DrinkDataSource
 import tech.stonks.drinkbar.datasource.drink.datasource.DrinkLiveDataSource
 import tech.stonks.drinkbar.datasource.drink.mapper.DrinkApiToDataMapper
+import tech.stonks.drinkbar.datasource.drink.mapper.IngredientStringsToDataMapper
 import tech.stonks.drinkbar.datasource.drink.service.DrinkService
 
 @Module
@@ -14,8 +15,13 @@ import tech.stonks.drinkbar.datasource.drink.service.DrinkService
 class DrinkModule {
 
     @Provides
-    fun providesDrinkApiDataSourceToDataModelMapper(): DrinkApiToDataMapper {
-        return DrinkApiToDataMapper()
+    fun providesDrinkApiDataSourceToDataModelMapper(ingredientMapper: IngredientStringsToDataMapper): DrinkApiToDataMapper {
+        return DrinkApiToDataMapper(ingredientMapper)
+    }
+
+    @Provides
+    fun providesIngredientMapper(): IngredientStringsToDataMapper {
+        return IngredientStringsToDataMapper()
     }
 
     @Provides

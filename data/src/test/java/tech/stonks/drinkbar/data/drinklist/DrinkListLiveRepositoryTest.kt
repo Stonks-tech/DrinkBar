@@ -61,6 +61,7 @@ class DrinkListLiveRepositoryTest {
             description = "description",
             image = "image",
             thumbnail = "thumbnail",
+            ingredients = emptyList(),
         )
         private val DRINK_DOMAIN = DrinkDomainModel(
             id = "1",
@@ -68,6 +69,7 @@ class DrinkListLiveRepositoryTest {
             description = "description",
             image = "image",
             thumbnail = "thumbnail",
+            ingredients = emptyList(),
         )
     }
 }

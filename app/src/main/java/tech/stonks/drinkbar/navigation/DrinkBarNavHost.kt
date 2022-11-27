@@ -15,6 +15,7 @@ import tech.stonks.drinkbar.composeui.drinkdetails.view.DrinkDetailsPage
 import tech.stonks.drinkbar.composeui.drinklist.view.DrinkListDependencyProvider
 import tech.stonks.drinkbar.composeui.drinklist.view.DrinkListPage
 import tech.stonks.drinkbar.di.drinkdetails.DrinkDetailsEntryPoint
+import tech.stonks.drinkbar.di.drinkdetails.DrinkDetailsViewModelFactory
 import tech.stonks.drinkbar.di.drinkdetails.DrinkDetailsViewModelFactoryProvider
 import tech.stonks.drinkbar.di.drinklist.DrinkListEntryPoint
 import tech.stonks.drinkbar.di.utils.hiltActivityEntryPoint
@@ -33,6 +34,7 @@ fun DrinkBarNavHost(
         navController = navController,
         startDestination = startDestination
     ) {
+        val globalDestinationMapper = GlobalPresentationDestinationToUiMapper(navController)
         composable("drink_list") {
             val dependencyProvider =
                 hiltEntryPoint<DrinkListEntryPoint>() as DrinkListDependencyProvider
@@ -54,8 +56,9 @@ fun DrinkBarNavHost(
             val drinkId = it.arguments?.getString("drinkId")
                 ?: throw IllegalArgumentException("drinkId is required")
             val factory = hiltActivityEntryPoint<DrinkDetailsViewModelFactoryProvider>().provide()
+
             val viewModel: DrinkDetailsViewModel = viewModel(
-                factory = DrinkDetailsViewModel.DrinkDetailsViewModelFactory.provideFactory(
+                factory = DrinkDetailsViewModelFactory.provideFactory(
                     factory,
                     drinkId
                 )
@@ -63,7 +66,11 @@ fun DrinkBarNavHost(
             val drinkDetailsDependencyProvider =
                 hiltEntryPoint<DrinkDetailsEntryPoint>() as DrinkDetailsDependencyProvider
 
-            DrinkDetailsPage(viewModel, drinkDetailsDependencyProvider.drinkMapper)
+            DrinkDetailsPage(
+                viewModel,
+                drinkDetailsDependencyProvider.drinkMapper,
+                AppDrinkDetailsDestinationToUiMapper(navController, globalDestinationMapper)
+            )
         }
     }
 }

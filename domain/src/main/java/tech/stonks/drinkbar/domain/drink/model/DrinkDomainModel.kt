@@ -5,5 +5,6 @@ data class DrinkDomainModel(
     val name: String,
     val description: String,
     val thumbnail: String?,
-    val image: String?
+    val image: String?,
+    val ingredients: List<IngredientDomainModel>
 )

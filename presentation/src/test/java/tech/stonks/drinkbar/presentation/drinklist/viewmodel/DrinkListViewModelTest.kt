@@ -119,14 +119,16 @@ class DrinkListViewModelTest {
             name = "name",
             description = "description",
             image = "image",
-            thumbnail = "thumbnail"
+            thumbnail = "thumbnail",
+            ingredients = emptyList(),
         )
 
         private val DRINK_PRESENTATION = DrinkPresentationModel(
             id = "1",
             name = "name",
             description = "description",
-            thumbnail = "thumbnail"
+            thumbnail = "thumbnail",
+            ingredients = emptyList(),
         )
     }
 }
