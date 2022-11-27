@@ -1,9 +1,8 @@
-package tech.stonks.drinkbar.data.drinklist.mapper
+package tech.stonks.drinkbar.data.drink.mapper
 
 import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import tech.stonks.drinkbar.data.drink.mapper.DrinkDataToDomainMapper
 import tech.stonks.drinkbar.data.drink.model.DrinkDataModel
 import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 
