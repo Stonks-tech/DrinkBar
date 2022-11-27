@@ -2,4 +2,11 @@
 <resources>
     <string name="drink_list_title">DrinkBar</string>
     <string name="drink_list_item_image_content_description">Picture of %s cocktail</string>
+    <string name="back_content_description">Back button arrow</string>
+    <string name="error_header_unknown">Unknown Error</string>
+    <string name="error_message_unknown">Some error ocurred, try again later</string>
+    <string name="error_unknown_icon_content_description">Error icon</string>
+    <string name="error_button_retry">Try Again</string>
+    <string name="drink_details_instructions">Instructions</string>
+    <string name="drink_details_ingredients">Ingredients</string>
 </resources>

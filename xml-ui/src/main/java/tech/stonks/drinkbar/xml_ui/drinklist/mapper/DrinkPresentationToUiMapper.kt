@@ -1,6 +1,6 @@
 package tech.stonks.drinkbar.xml_ui.drinklist.mapper
 
-import tech.stonks.drinkbar.presentation.drinklist.model.DrinkPresentationModel
+import tech.stonks.drinkbar.presentation.drink.model.DrinkPresentationModel
 import tech.stonks.drinkbar.xml_ui.drinklist.model.DrinkUiModel
 
 class DrinkPresentationToUiMapper {

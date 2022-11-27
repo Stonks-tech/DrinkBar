@@ -23,4 +23,14 @@ class DrinkLiveDataSource(
             throw HttpException(response)
         }
     }
+
+    override fun getDrink(id: String): DrinkDataModel {
+        val response = _drinkService.getDrink(id)
+            .execute()
+        return if (response.isSuccessful) {
+            _drinkApiToDataMapper.map(response.body()?.drinks?.firstOrNull()!!)
+        } else {
+            throw HttpException(response)
+        }
+    }
 }

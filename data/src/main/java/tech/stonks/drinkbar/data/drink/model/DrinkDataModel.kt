@@ -6,4 +6,5 @@ data class DrinkDataModel(
     val description: String,
     val image: String?,
     val thumbnail: String?,
+    val ingredients: List<IngredientDataModel>
 )

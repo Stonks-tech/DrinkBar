@@ -12,4 +12,7 @@ interface DrinkService {
 
     @GET("search.php")
     fun searchDrink(@Query("s") drinkName: String = ""): Call<SearchDrinksResponseApiModel>
+
+    @GET("lookup.php")
+    fun getDrink(@Query("i") drinkId: String): Call<SearchDrinksResponseApiModel>
 }

@@ -1,11 +1,12 @@
 package tech.stonks.drinkbar.presentation.drinklist.viewmodel
 
 import dagger.hilt.android.lifecycle.HiltViewModel
-import tech.stonks.drinkbar.domain.drinklist.model.DrinkDomainModel
+import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 import tech.stonks.drinkbar.domain.drinklist.usecase.GetDrinkListUseCase
 import tech.stonks.drinkbar.presentation.architecture.viewmodel.BaseViewModel
 import tech.stonks.drinkbar.presentation.architecture.viewmodel.usecase.UseCaseExecutorProvider
-import tech.stonks.drinkbar.presentation.drinklist.mapper.DrinkDomainToPresentationMapper
+import tech.stonks.drinkbar.presentation.drink.mapper.DrinkDomainToPresentationMapper
+import tech.stonks.drinkbar.presentation.drinklist.model.DrinkListPresentationDestination
 import tech.stonks.drinkbar.presentation.drinklist.model.DrinkListState
 import javax.inject.Inject
 
@@ -25,6 +26,10 @@ class DrinkListViewModel @Inject constructor(
         loadDrinks()
     }
 
+    fun onItemClicked(drinkId: String) {
+        navigateTo(DrinkListPresentationDestination.DrinkDetails(drinkId))
+    }
+
     private fun loadDrinks() {
         updateState(DrinkListState::loading)
         execute(
@@ -33,7 +38,8 @@ class DrinkListViewModel @Inject constructor(
             onSuccess = { drinks -> presentDrinks(drinks) },
             onException = {
                 it.printStackTrace()
-                Unit }
+                updateState { loading(false) }
+            }
         )
     }
 
