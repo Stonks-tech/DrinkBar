@@ -4,6 +4,16 @@ This app was created as a small clean architecture showcase in android applicati
 small it does not incorporate feature-modules. In bigger apps feature-modules are a good way to
 separate the app into smaller parts, which make maintenance by separate teams easier.
 
+## Screenshots
+
+### Cocktail List (Main Screen)
+
+![Cocktail List](https://raw.githubusercontent.com/Stonks-tech/DrinkBar/master/screenshots/drink_list.jpg)
+
+### Cocktail Details
+
+![Cocktail Details](https://raw.githubusercontent.com/Stonks-tech/DrinkBar/master/screenshots/drink_details.jpg)
+
 ## Migrate XML to Compose Case Study
 
 During development I decided to migrate from XML to Compose. Such migration with Clean Architecture
