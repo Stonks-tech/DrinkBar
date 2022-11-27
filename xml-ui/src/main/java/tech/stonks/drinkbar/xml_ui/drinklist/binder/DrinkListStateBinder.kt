@@ -8,7 +8,7 @@ import tech.stonks.drinkbar.xml_ui.drinklist.view.DrinkListViewsProvider
 
 class DrinkListStateBinder(
     private val _drinkPresentationToUiMapper: DrinkPresentationToUiMapper
-): ViewStateBinder<DrinkListState, DrinkListViewsProvider> {
+) : ViewStateBinder<DrinkListState, DrinkListViewsProvider> {
     private val _drinksAdapter by lazy {
         DrinksAdapter()
     }

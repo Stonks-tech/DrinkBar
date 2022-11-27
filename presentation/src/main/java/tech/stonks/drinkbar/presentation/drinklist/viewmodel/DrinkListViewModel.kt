@@ -3,6 +3,7 @@ package tech.stonks.drinkbar.presentation.drinklist.viewmodel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import tech.stonks.drinkbar.domain.drink.model.DrinkDomainModel
 import tech.stonks.drinkbar.domain.drinklist.usecase.GetDrinkListUseCase
+import tech.stonks.drinkbar.domain.drinklist.usecase.SearchDrinksUseCase
 import tech.stonks.drinkbar.presentation.architecture.viewmodel.BaseViewModel
 import tech.stonks.drinkbar.presentation.architecture.viewmodel.usecase.UseCaseExecutorProvider
 import tech.stonks.drinkbar.presentation.drink.mapper.DrinkDomainToPresentationMapper
@@ -13,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DrinkListViewModel @Inject constructor(
     private val _getDrinkListUseCase: GetDrinkListUseCase,
+    private val _searchDrinksUseCase: SearchDrinksUseCase,
     private val _drinkDomainToPresentationMapper: DrinkDomainToPresentationMapper,
     useCaseExecutorProvider: UseCaseExecutorProvider
 ) : BaseViewModel<DrinkListState, Unit>(useCaseExecutorProvider) {
@@ -24,6 +26,21 @@ class DrinkListViewModel @Inject constructor(
 
     fun onRefreshAction() {
         loadDrinks()
+    }
+
+    fun onSearchAction(query: String) {
+        updateState { withSearchQuery(query) }
+        updateState(DrinkListState::loading)
+        executeDebounced(
+            _searchDrinksUseCase,
+            query,
+            300,
+            onSuccess = { drinks -> presentDrinks(drinks) },
+            onException = {
+                it.printStackTrace()
+                updateState { loading(false) }
+            }
+        )
     }
 
     fun onItemClicked(drinkId: String) {

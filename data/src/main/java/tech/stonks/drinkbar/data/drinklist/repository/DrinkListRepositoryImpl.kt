@@ -10,6 +10,7 @@ class DrinkListRepositoryImpl(
     private val _drinkDataModelToDomainModelMapper: DrinkDataToDomainMapper
 ) : DrinkListRepository {
     override fun drinkList(): List<DrinkDomainModel> {
-        return _drinkApiDataSource.getDrinkList().map { _drinkDataModelToDomainModelMapper.map(it) }
+        return _drinkApiDataSource.getDrinkList("")
+            .map { _drinkDataModelToDomainModelMapper.map(it) }
     }
 }

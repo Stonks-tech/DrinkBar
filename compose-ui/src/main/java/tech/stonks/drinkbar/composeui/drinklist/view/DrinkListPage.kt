@@ -34,6 +34,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import tech.stonks.drinkbar.composeui.R
+import tech.stonks.drinkbar.composeui.components.SearchComposable
 import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkListDestinationToUiMapper
 import tech.stonks.drinkbar.composeui.drinklist.mapper.DrinkPresentationToUiMapper
 import tech.stonks.drinkbar.composeui.drinklist.model.DrinkUiModel
@@ -59,6 +60,8 @@ fun DrinkListPage(
     DrinkListPage(
         drinkList = drinkList,
         isLoading = state.isLoading,
+        searchQuery = state.searchQuery,
+        onSearchQueryChanged = viewModel::onSearchAction,
         onRefresh = viewModel::onRefreshAction,
         onItemClick = viewModel::onItemClicked,
     )
@@ -68,13 +71,18 @@ fun DrinkListPage(
 private fun DrinkListPage(
     drinkList: List<DrinkUiModel>,
     isLoading: Boolean,
+    searchQuery: String = "",
     onRefresh: () -> Unit = {},
     onItemClick: (id: String) -> Unit = {},
+    onSearchQueryChanged: (String) -> Unit = {},
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(id = R.string.drink_list_title)) }
+                title = { Text(stringResource(id = R.string.drink_list_title)) },
+                actions = {
+                    SearchComposable(value = searchQuery, onValueChange = onSearchQueryChanged)
+                }
             )
         }
     ) { padding ->

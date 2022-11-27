@@ -5,7 +5,7 @@ import tech.stonks.drinkbar.domain.cleanarchitecture.coroutine.CoroutineContextP
 
 abstract class BackgroundExecutingUseCase<REQUEST, RESULT>(
     private val _coroutineContextProvider: CoroutineContextProvider
-): UseCase<REQUEST, RESULT> {
+) : UseCase<REQUEST, RESULT> {
 
     final override suspend fun execute(input: REQUEST, onResult: (RESULT) -> Unit) {
         val result = withContext(_coroutineContextProvider.io) {

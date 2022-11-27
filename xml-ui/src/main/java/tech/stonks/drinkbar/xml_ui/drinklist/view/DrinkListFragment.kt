@@ -35,7 +35,7 @@ class DrinkListFragment : BaseFragment<DrinkListState, Unit>(), DrinkListViewsPr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             viewModel.onEntered()
         }
     }
