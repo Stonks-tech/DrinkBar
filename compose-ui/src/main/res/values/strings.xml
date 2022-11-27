@@ -9,4 +9,6 @@
     <string name="error_button_retry">Try Again</string>
     <string name="drink_details_instructions">Instructions</string>
     <string name="drink_details_ingredients">Ingredients</string>
+    <string name="close_icon_content_description">Close Icon Button</string>
+    <string name="search_icon_content_description">Search icon button</string>
 </resources>

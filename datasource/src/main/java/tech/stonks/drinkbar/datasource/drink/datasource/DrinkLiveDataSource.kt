@@ -10,8 +10,8 @@ class DrinkLiveDataSource(
     private val _drinkService: DrinkService,
     private val _drinkApiToDataMapper: DrinkApiToDataMapper
 ) : DrinkDataSource {
-    override fun getDrinkList(): List<DrinkDataModel> {
-        val response = _drinkService.searchDrink("")
+    override fun getDrinkList(query: String): List<DrinkDataModel> {
+        val response = _drinkService.searchDrink(query)
             .execute()
         return if (response.isSuccessful) {
             response.body()!!
