@@ -174,8 +174,9 @@ class DrinkListViewModelTest {
 
         observer.assertValueHistory(
             DrinkListState(emptyList(), false),
-            DrinkListState(emptyList(), true),
-            DrinkListState(listOf(DRINK_PRESENTATION), false)
+            DrinkListState(emptyList(), false, searchQuery = query),
+            DrinkListState(emptyList(), true, searchQuery = query),
+            DrinkListState(listOf(DRINK_PRESENTATION), false, searchQuery = query)
         )
     }
 
@@ -197,8 +198,9 @@ class DrinkListViewModelTest {
 
         observer.assertValueHistory(
             DrinkListState(emptyList(), false),
-            DrinkListState(emptyList(), true),
-            DrinkListState(emptyList(), false)
+            DrinkListState(emptyList(), false, searchQuery = query),
+            DrinkListState(emptyList(), true, searchQuery = query),
+            DrinkListState(emptyList(), false, searchQuery = query)
         )
     }
 

@@ -61,7 +61,7 @@ class DrinkLiveDataSourceTest {
         _mockWebServer.enqueueResponse("search-drink-200.json", 200)
         every { _drinkApiToDataMapper.map(DRINK_API) } returns DRINK_DATA
 
-        val actual = _dataSource.getDrinkList()
+        val actual = _dataSource.getDrinkList("")
 
         assertEquals(listOf(DRINK_DATA), actual)
     }
@@ -71,7 +71,7 @@ class DrinkLiveDataSourceTest {
         _mockWebServer.enqueueResponse("search-drink-200.json", 200)
         every { _drinkApiToDataMapper.map(DRINK_API) } returns DRINK_DATA
 
-        val actual = _dataSource.getDrinkList()
+        val actual = _dataSource.getDrinkList("")
 
         verify { _drinkApiToDataMapper.map(DRINK_API) }
     }
