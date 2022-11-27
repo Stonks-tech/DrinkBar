@@ -32,11 +32,11 @@ class DrinksAdapter : RecyclerView.Adapter<DrinksAdapter.DrinkViewHolder>() {
         return items.size
     }
 
-    inner class DrinkViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    inner class DrinkViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val nameField: TextView by lazy { view.findViewById<TextView>(R.id.drink_name) }
         private val thumbnailImage: ImageView by lazy { view.findViewById(R.id.thumbnail_image) }
 
-        fun bind(drink: DrinkUiModel){
+        fun bind(drink: DrinkUiModel) {
             nameField.text = drink.name
             Glide.with(itemView.context)
                 .load(drink.thumbnail)

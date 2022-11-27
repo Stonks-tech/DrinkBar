@@ -7,9 +7,11 @@ separate the app into smaller parts, which make maintenance by separate teams ea
 ## Screenshots
 
 ### Cocktail List (Main Screen)
+
 <img src="https://raw.githubusercontent.com/Stonks-tech/DrinkBar/master/screenshots/drink_list.jpg" alt="Cocktail List Screenshot" width="400"/>
 
 ### Cocktail Details
+
 <img src="https://raw.githubusercontent.com/Stonks-tech/DrinkBar/master/screenshots/drink_details.jpg" alt="Cocktail List Screenshot" width="400"/>
 
 ## Tech Stack

@@ -6,11 +6,12 @@ import kotlinx.coroutines.launch
 import tech.stonks.drinkbar.domain.cleanarchitecture.exception.DomainException
 import tech.stonks.drinkbar.domain.cleanarchitecture.exception.UnknownDomainException
 
-class UseCaseExecutor (private val _coroutineScope: CoroutineScope){
+class UseCaseExecutor(private val _coroutineScope: CoroutineScope) {
     fun <OUTPUT> execute(
         useCase: UseCase<Unit, OUTPUT>,
         onSuccess: (OUTPUT) -> Unit = {},
-        onException: (DomainException) -> Unit = {}) {
+        onException: (DomainException) -> Unit = {}
+    ) {
         execute(useCase, Unit, onSuccess, onException)
     }
 
@@ -18,7 +19,8 @@ class UseCaseExecutor (private val _coroutineScope: CoroutineScope){
         useCase: UseCase<INPUT, OUTPUT>,
         value: INPUT,
         onSuccess: (OUTPUT) -> Unit = {},
-        onException: (DomainException) -> Unit = {}) {
+        onException: (DomainException) -> Unit = {}
+    ) {
         _coroutineScope.launch {
             try {
                 useCase.execute(value, onSuccess)

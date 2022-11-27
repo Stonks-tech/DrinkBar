@@ -12,7 +12,7 @@ import tech.stonks.drinkbar.xml_ui.architecture.mapper.NotificationPresentationT
 import tech.stonks.drinkbar.xml_ui.architecture.mapper.ViewStateBinder
 import tech.stonks.drinkbar.xml_ui.navigation.mapper.DestinationPresentationToUiMapper
 
-abstract class BaseFragment<STATE: Any, NOTIFICATION: Any>: Fragment(), ViewsProvider {
+abstract class BaseFragment<STATE : Any, NOTIFICATION : Any> : Fragment(), ViewsProvider {
 
     companion object {
         private const val NO_LAYOUT_RESOURCE = 0
@@ -32,7 +32,7 @@ abstract class BaseFragment<STATE: Any, NOTIFICATION: Any>: Fragment(), ViewsPro
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = if(layoutResourceId != NO_LAYOUT_RESOURCE) {
+        val view = if (layoutResourceId != NO_LAYOUT_RESOURCE) {
             inflater.inflate(layoutResourceId, container, false).apply {
                 bindViews()
             }

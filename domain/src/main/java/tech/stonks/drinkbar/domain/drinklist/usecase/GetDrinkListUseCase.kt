@@ -8,7 +8,7 @@ import tech.stonks.drinkbar.domain.drinklist.repository.DrinkListRepository
 class GetDrinkListUseCase(
     private val _drinkListRepository: DrinkListRepository,
     coroutineContextProvider: CoroutineContextProvider
-): BackgroundExecutingUseCase<Unit, List<DrinkDomainModel>>(coroutineContextProvider) {
+) : BackgroundExecutingUseCase<Unit, List<DrinkDomainModel>>(coroutineContextProvider) {
     override fun executeInBackground(request: Unit): List<DrinkDomainModel> {
         return _drinkListRepository.drinkList()
     }
