@@ -14,6 +14,14 @@ separate the app into smaller parts, which make maintenance by separate teams ea
 
 ![Cocktail Details](https://raw.githubusercontent.com/Stonks-tech/DrinkBar/master/screenshots/drink_details.jpg)
 
+## Tech Stack
+
+- UI - Jetpack Compose
+- DI - Dagger Hilt
+- Architecture - MVVM + Clean Architecture
+- Navigation - Navigation Component
+- Language - Kotlin
+
 ## Migrate XML to Compose Case Study
 
 During development I decided to migrate from XML to Compose. Such migration with Clean Architecture
