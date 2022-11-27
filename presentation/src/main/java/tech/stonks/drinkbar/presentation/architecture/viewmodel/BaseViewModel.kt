@@ -48,6 +48,16 @@ abstract class BaseViewModel<STATE : Any, NOTIFICATION : Any>(
         useCaseExecutor.execute(useCase, value, onSuccess, onException)
     }
 
+    protected fun <INPUT, OUTPUT> executeDebounced(
+        useCase: UseCase<INPUT, OUTPUT>,
+        value: INPUT,
+        debounce: Long = 300,
+        onSuccess: (OUTPUT) -> Unit = {},
+        onException: (DomainException) -> Unit = {}
+    ) {
+        useCaseExecutor.executeDebounced(useCase, value, debounce, onSuccess, onException)
+    }
+
     protected fun updateState(newState: STATE) {
         _state.value = newState
     }

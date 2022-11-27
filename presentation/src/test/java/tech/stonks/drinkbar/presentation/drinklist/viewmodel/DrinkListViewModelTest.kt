@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package tech.stonks.drinkbar.presentation.drinklist.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -146,13 +148,21 @@ class DrinkListViewModelTest {
         every { _useCaseExecutor.execute(_getDrinkListUseCase, Unit, any(), any()) } answers {
             thirdArg<(List<DrinkDomainModel>) -> Unit>().invoke(listOf(DRINK_DOMAIN))
         }
-        every { _useCaseExecutor.execute(_searchDrinksUseCase, query, any(), any()) } answers {
-            thirdArg<(List<DrinkDomainModel>) -> Unit>().invoke(listOf(DRINK_DOMAIN))
+        every {
+            _useCaseExecutor.executeDebounced(
+                _searchDrinksUseCase,
+                query,
+                300,
+                any(),
+                any()
+            )
+        } answers {
+            (args[3] as (List<DrinkDomainModel>) -> Unit).invoke(listOf(DRINK_DOMAIN))
         }
 
         _viewModel.onSearchAction(query)
 
-        verify { _useCaseExecutor.execute(_searchDrinksUseCase, query, any(), any()) }
+        verify { _useCaseExecutor.executeDebounced(_searchDrinksUseCase, query, 300, any(), any()) }
         verify(exactly = 0) { _useCaseExecutor.execute(_getDrinkListUseCase, Unit, any(), any()) }
     }
 
@@ -165,8 +175,16 @@ class DrinkListViewModelTest {
         every { _useCaseExecutor.execute(_getDrinkListUseCase, Unit, any(), any()) } answers {
             thirdArg<(List<DrinkDomainModel>) -> Unit>().invoke(listOf(DRINK_DOMAIN))
         }
-        every { _useCaseExecutor.execute(_searchDrinksUseCase, query, any(), any()) } answers {
-            thirdArg<(List<DrinkDomainModel>) -> Unit>().invoke(listOf(DRINK_DOMAIN))
+        every {
+            _useCaseExecutor.executeDebounced(
+                _searchDrinksUseCase,
+                query,
+                300,
+                any(),
+                any()
+            )
+        } answers {
+            (args[3] as ((List<DrinkDomainModel>) -> Unit)).invoke(listOf(DRINK_DOMAIN))
         }
 
         val observer = _viewModel.state.test()
@@ -189,7 +207,15 @@ class DrinkListViewModelTest {
         every { _useCaseExecutor.execute(_getDrinkListUseCase, Unit, any(), any()) } answers {
             thirdArg<(List<DrinkDomainModel>) -> Unit>().invoke(listOf(DRINK_DOMAIN))
         }
-        every { _useCaseExecutor.execute(_searchDrinksUseCase, query, any(), any()) } answers {
+        every {
+            _useCaseExecutor.executeDebounced(
+                _searchDrinksUseCase,
+                query,
+                300,
+                any(),
+                any()
+            )
+        } answers {
             (lastArg<(DomainException) -> Unit>()).invoke(UnknownDomainException(Exception()))
         }
 

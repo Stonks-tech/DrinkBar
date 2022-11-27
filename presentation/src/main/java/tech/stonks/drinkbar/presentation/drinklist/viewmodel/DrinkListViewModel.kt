@@ -30,18 +30,17 @@ class DrinkListViewModel @Inject constructor(
 
     fun onSearchAction(query: String) {
         updateState { withSearchQuery(query) }
-        if (state.value?.isLoading == false) {
-            updateState(DrinkListState::loading)
-            execute(
-                _searchDrinksUseCase,
-                query,
-                onSuccess = { drinks -> presentDrinks(drinks) },
-                onException = {
-                    it.printStackTrace()
-                    updateState { loading(false) }
-                }
-            )
-        }
+        updateState(DrinkListState::loading)
+        executeDebounced(
+            _searchDrinksUseCase,
+            query,
+            300,
+            onSuccess = { drinks -> presentDrinks(drinks) },
+            onException = {
+                it.printStackTrace()
+                updateState { loading(false) }
+            }
+        )
     }
 
     fun onItemClicked(drinkId: String) {
