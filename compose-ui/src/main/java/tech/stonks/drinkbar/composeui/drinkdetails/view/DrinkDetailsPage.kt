@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -34,6 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import tech.stonks.drinkbar.composeui.R
+import tech.stonks.drinkbar.composeui.components.BackgroundArtifact
 import tech.stonks.drinkbar.composeui.components.Loading
 import tech.stonks.drinkbar.composeui.components.StatusComposable
 import tech.stonks.drinkbar.composeui.drinkdetails.mapper.DrinkDetailsDestinationToUiMapper
@@ -86,39 +88,44 @@ private fun DrinkDetailsPage(
                         )
                     }
                 },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                )
             )
         }
     ) { padding ->
-        Box(
-            modifier = Modifier
-                .padding(padding)
-                .padding(dimensionResource(id = R.dimen.drink_details_page_padding))
-                .fillMaxWidth()
-        ) {
-            when {
-                isLoading -> Loading()
-                drink != null -> DrinkContent(drink)
-                else -> StatusComposable(
-                    image = {
-                        Icon(
-                            imageVector = Icons.Rounded.Warning,
-                            contentDescription = stringResource(id = R.string.error_unknown_icon_content_description)
-                        )
-                    },
-                    header = stringResource(id = R.string.error_header_unknown),
-                    message = stringResource(
-                        id = R.string.error_message_unknown
-                    ),
-                    primaryButton = {
-                        Button(
-                            content = {
-                                Text(text = stringResource(id = R.string.error_button_retry))
-                            },
-                            onClick = onTryAgain,
-                            colors = ButtonDefaults.buttonColors()
-                        )
-                    }
-                )
+        Box(modifier = Modifier.padding(padding)) {
+            BackgroundArtifact()
+            Box(
+                modifier = Modifier
+                    .padding(dimensionResource(id = R.dimen.drink_details_page_padding))
+                    .fillMaxWidth()
+            ) {
+                when {
+                    isLoading -> Loading()
+                    drink != null -> DrinkContent(drink)
+                    else -> StatusComposable(
+                        image = {
+                            Icon(
+                                imageVector = Icons.Rounded.Warning,
+                                contentDescription = stringResource(id = R.string.error_unknown_icon_content_description)
+                            )
+                        },
+                        header = stringResource(id = R.string.error_header_unknown),
+                        message = stringResource(
+                            id = R.string.error_message_unknown
+                        ),
+                        primaryButton = {
+                            Button(
+                                content = {
+                                    Text(text = stringResource(id = R.string.error_button_retry))
+                                },
+                                onClick = onTryAgain,
+                                colors = ButtonDefaults.buttonColors()
+                            )
+                        }
+                    )
+                }
             }
         }
     }

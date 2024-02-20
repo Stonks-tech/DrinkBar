@@ -45,7 +45,10 @@ fun SearchComposable(value: String, onValueChange: (String) -> Unit) {
                     .fillMaxWidth()
                     .padding(end = dimensionResource(id = R.dimen.action_end_padding)),
                 colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = androidx.compose.ui.graphics.Color.Transparent
+                    backgroundColor = androidx.compose.ui.graphics.Color.Transparent,
+                    textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    focusedIndicatorColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    focusedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 ),
             )
         }
