@@ -47,6 +47,10 @@ class DrinkListViewModel @Inject constructor(
         navigateTo(DrinkListPresentationDestination.DrinkDetails(drinkId))
     }
 
+    fun onCompactAction() {
+        updateState { compact(isCompact = !isCompact) }
+    }
+
     private fun loadDrinks() {
         updateState(DrinkListState::loading)
         execute(
